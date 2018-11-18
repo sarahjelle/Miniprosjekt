@@ -1,0 +1,48 @@
+.container{
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 10px;
+    background-color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.scrollmenu {
+    background-color: #ffffff;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.scrollmenuItem{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.scrollmenuItem:hover {
+    background-color: #777;
+}
+
+.background{
+    background-color: #eef2ee;
+}
+
+.wrapText{
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .container{
+        width: 90%;
+    }
+}
+

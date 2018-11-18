@@ -1,52 +1,92 @@
 // @flow
 
-import express from 'express';
+var express = require("express");
+var mysql = require("mysql");
+var bodyParser = require("body-parser");
+var app = express();
+var apiRoutes = express.Router();
+app.use(bodyParser.json()); // for å tolke JSON
+const ArticleDao = require("./articledao.js");
 import path from 'path';
-import reload from 'reload';
-import fs from 'fs';
-import { Students } from './models.js';
+
+const public_path = path.join(__dirname, '/../../client/public');
+app.use(express.static(public_path));
 
 type Request = express$Request;
 type Response = express$Response;
 
-const public_path = path.join(__dirname, '/../../client/public');
-
-let app = express();
-
-app.use(express.static(public_path));
-app.use(express.json()); // For parsing application/json
-
-app.get('/students', (req: Request, res: Response) => {
-  return Students.findAll().then(students => res.send(students));
+var pool = mysql.createPool({
+    connectionLimit: 2,
+    host: "mysql.stud.iie.ntnu.no",
+    user: "sarahjel",
+    password: "BxKW93o3",
+    database: "sarahjel",
+    debug: false,
+    multipleStatements: true
 });
 
-app.get('/students/:id', (req: Request, res: Response) => {
-  return Students.findOne({ where: { id: Number(req.params.id) } }).then(
-    student => (student ? res.send(student) : res.sendStatus(404))
-  );
+
+let articleDao = new ArticleDao(pool);
+
+app.get("/newsfeed", (req: Request, res: Response) =>{
+  console.log("/artikkel: fikk request fra klient");
+  articleDao.getAll((status, data) => {
+    res.status(status);
+    res.json(data);
+  });
 });
 
-app.put('/students', (req: Request, res: Response) => {
-  if (
-    !req.body ||
-    typeof req.body.id != 'number' ||
-    typeof req.body.firstName != 'string' ||
-    typeof req.body.lastName != 'string' ||
-    typeof req.body.email != 'string'
-  )
-    return res.sendStatus(400);
-
-  return Students.update(
-    { firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email },
-    { where: { id: req.body.id } }
-  ).then(count => (count ? res.sendStatus(200) : res.sendStatus(404)));
+app.get("/nyheter", (req: Request, res: Response) => {
+    articleDao.getImportant((status, data) => {
+        res.status(status);
+        res.json(data);
+    });
 });
 
-// Hot reload application when not in production environment
-if (process.env.NODE_ENV !== 'production') {
-  let reloadServer = reload(app);
-  fs.watch(public_path, () => reloadServer.reload());
-}
+app.get("/nyheter/:kategori", (req: Request, res: Response) => {
+    articleDao.getByCategory(req.params.kategori, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+app.get("/kategorier", (req: Request, res: Response) => {
+    articleDao.getCategories((status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+app.get("/nyheter/:kategori/:artikkel_id", (req: Request, res: Response) =>{
+    articleDao.getOne(req.params.artikkel_id, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+app.post("/newarticle", (req: Request, res: Response) => {
+    console.log("POST-request fra klient");
+    articleDao.createOne(req.body, (status, data) => {
+        res.status(status); 
+        res.json(data);
+    })
+});
+
+app.put("/nyheter/:kategori/:artikkel_id", (req: Request, res: Response) => {
+    articleDao.updateArticle(req.body, req.params.artikkel_id, (status, data) => {
+        res.status(status);
+        res.json(data);
+    })
+});
+
+app.delete("/nyheter/:kategori/:artikkel_id", (req: Request, res: Response) => {
+   console.log("Delete-request fra klient");
+   articleDao.deleteOne(req.params.artikkel_id, (status, data) => {
+       res.status(status);
+       res.json(data);
+    })
+});
+
 
 // The listen promise can be used to wait for the web server to start (for instance in your tests)
 export let listen = new Promise<void>((resolve, reject) => {

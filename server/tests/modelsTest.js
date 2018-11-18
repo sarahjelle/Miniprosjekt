@@ -1,6 +1,6 @@
 // @flow
 
-import { Students, sync } from '../src/models.js';
+import { Students, sync } from '../src/articledao.js';
 
 beforeAll(async () => {
   await sync;
