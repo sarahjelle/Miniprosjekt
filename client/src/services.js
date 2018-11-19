@@ -41,12 +41,12 @@ class ArticleService{
     }
 
 
-    getArticlesByCategory(category: string): Promise<Article[]>{
-        return axios.get('/nyheter/' + category);
+    getArticlesByCategory(category: string, page:number): Promise<Article[]>{
+        return axios.get('/nyheter/' + category + '?page=' + page);
     }
 
-    getImportant(): Promise<Article[]>{
-        return axios.get('/nyheter');
+    getImportant(page:number): Promise<Article[]>{
+        return axios.get('/nyheter?page=' + page);
     }
 
     getCategories(): Promise<Kategori[]>{

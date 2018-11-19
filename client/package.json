@@ -18,6 +18,7 @@
     "axios": "^0.18.0",
     "react-router-dom": "^4.3.1",
     "react-simplified": "^1.5.2",
+    "semantic-ui-css": "^2.4.0",
     "semantic-ui-react": "^0.83.0"
   },
   "devDependencies": {

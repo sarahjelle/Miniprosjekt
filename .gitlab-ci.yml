@@ -1,8 +1,6 @@
 variables:
-  MYSQL_DATABASE: School
-  MYSQL_USER: root
+  MYSQL_DATABASE: 'School'
   MYSQL_ROOT_PASSWORD: '1234abcd'
-  MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
 test:
   image: node:latest

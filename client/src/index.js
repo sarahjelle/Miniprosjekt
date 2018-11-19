@@ -6,7 +6,9 @@ import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 import {Alert, CardView, NavBar} from './widgets';
 import {articleService, Article} from './services';
-import {Form, Divider, Container, Label,Icon,  Card, Button} from 'semantic-ui-react';
+import {Form, Divider, Container, Label, Card, Button, Icon} from 'semantic-ui-react';
+// $FlowFixMe
+//import 'semantic-ui-css/semantic.min.css';
 
 // Reload application when not in production environment
 if (process.env.NODE_ENV !== 'production') {
@@ -65,6 +67,7 @@ class Ticker extends Component{
 
 class Home extends Component {
     articles = [];
+    page: number = 0;
 
     render(){
         console.log(this.articles);
@@ -82,21 +85,49 @@ class Home extends Component {
                             </NavLink>
                         ))}
                     </div>
+                    <div>
+                        <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
+                        <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
+                    </div>
                 </div>
             </div>
         );
     }
 
-    mounted(){
+    pageUp = () => {
+        if (this.page < 0) {
+            this.page = 0;
+        } else {
+            this.page++;
+        }
+        this.fetchPage();
+    };
+
+    pageDown = () => {
+        if (this.page < 0) {
+            this.page = 0;
+        } else {
+            this.page--;
+        }
+        this.fetchPage();
+    };
+
+    fetchPage = () => {
         articleService
-            .getImportant()
+            .getImportant(this.page)
             .then(articles => (this.articles = articles))
             .catch((error: Error) => Alert.danger(error.message));
+    };
+
+
+    mounted() {
+        this.fetchPage();
     }
 }
 
 class Category extends Component<{match: {params: {kategori: string}}}>{
     articles = [];
+    page: number = 0;
 
     render(){
         console.log(this.articles);
@@ -109,16 +140,42 @@ class Category extends Component<{match: {params: {kategori: string}}}>{
                                   ingress={article.ingress}/>
                     </NavLink>
                 ))}
+                <div>
+                    <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
+                    <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
+                </div>
             </div>
         );
     }
 
-    mounted(){
+    pageUp = () => {
+        if (this.page < 0) {
+            this.page = 0;
+        } else {
+            this.page++;
+        }
+        this.fetchPage();
+    };
+
+    pageDown = () => {
+        if (this.page < 0) {
+            this.page = 0;
+        } else {
+            this.page--;
+        }
+        this.fetchPage();
+    };
+
+    fetchPage = () => {
         articleService
-            .getArticlesByCategory(this.props.match.params.kategori)
+            .getArticlesByCategory(this.props.match.params.kategori, this.page)
             .then(articles => (this.articles = articles))
             .catch((error: Error) => Alert.danger(error.message));
+    };
 
+
+    mounted() {
+        this.fetchPage();
     }
 }
 
@@ -136,7 +193,7 @@ class ArticleView extends Component<{match: {params: {id: number}}}>{
                     <img width="100%" height="auto" src={this.article.bilde} alt={this.article.overskrift}/>
                 </Container>
                 <Container textAlign="justified">
-                    <i>Sist endret: {this.article.tid}</i>
+                    <i>Lagt inn: {this.article.tid}</i>
                     <br/>
                     <i> Skrevet av: {this.article.forfatter}</i>
                     <Divider />
@@ -251,7 +308,7 @@ class NewArticle extends Component<{},State>{
 
         articleService
             .newArticle(article)
-            .then(() => {history.push("/")})
+            .then(() => {history.push("/nyheter/" + article.kategori)})
             .catch((error: Error) => Alert.danger(error.message));
     }
 

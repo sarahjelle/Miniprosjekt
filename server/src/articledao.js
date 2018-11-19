@@ -4,13 +4,13 @@ const Dao = require("./dao.js");
 
 module.exports = class ArticleDao extends Dao{
     getAll(callback: (status: string, data: string) => mixed){
-        super.query("select DATE_FORMAT(tid, '%H:%i') as tid, overskrift, artikkel_id from artikkel", [], callback);
+        super.query("select DATE_FORMAT(tid, '%d. %M  %Y %H:%i') as tid, overskrift, artikkel_id from artikkel ORDER BY tid DESC", [], callback);
     }
 
-    getImportant(callback: (status: string, data: string) => mixed){
+    getImportant(start: number, end: number, callback: (status: string, data: string) => mixed){
         super.query(
-            "select artikkel_id, tid, overskrift, ingress, bilde, forfatter, kategori from artikkel where viktighet = 1",
-            [],
+            "select artikkel_id, tid, overskrift, ingress, bilde, forfatter, kategori from artikkel where viktighet = 1 ORDER BY tid DESC LIMIT ?,?",
+            [start, end],
             callback
         );
     }
@@ -21,6 +21,7 @@ module.exports = class ArticleDao extends Dao{
             callback);
     }
 
+
     getCategories(callback: (status: string, data: string) => mixed){
         super.query(
             "select * from kategori",
@@ -29,10 +30,10 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    getByCategory(category: string, callback: (status: string, data: string) => mixed){
+    getByCategory(category: string, start: number, end: number, callback: (status: string, data: string) => mixed){
         super.query(
-            "SELECT * FROM artikkel WHERE kategori=?",
-            [category],
+            "SELECT * FROM artikkel WHERE kategori=? ORDER BY tid DESC LIMIT ?,?",
+            [category, start, end],
             callback
         );
     }
@@ -60,7 +61,7 @@ module.exports = class ArticleDao extends Dao{
 
         super.query(
             "UPDATE artikkel " +
-            "SET overskrift=?, ingress=?, innhold=?, kategori=?, bilde=?, viktighet=?, forfatter=?, tid=NOW()" +
+            "SET overskrift=?, ingress=?, innhold=?, kategori=?, bilde=?, viktighet=?, forfatter=?" +
             "WHERE artikkel_id=?",
             val,
             callback

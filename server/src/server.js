@@ -27,6 +27,7 @@ var pool = mysql.createPool({
 
 
 let articleDao = new ArticleDao(pool);
+const SAK_LIMIT = 20;
 
 app.get("/newsfeed", (req: Request, res: Response) =>{
   console.log("/artikkel: fikk request fra klient");
@@ -37,14 +38,16 @@ app.get("/newsfeed", (req: Request, res: Response) =>{
 });
 
 app.get("/nyheter", (req: Request, res: Response) => {
-    articleDao.getImportant((status, data) => {
+    const page: number = Number(req.query.page) || 0;
+    articleDao.getImportant(page*SAK_LIMIT, SAK_LIMIT,(status, data) => {
         res.status(status);
         res.json(data);
     });
 });
 
 app.get("/nyheter/:kategori", (req: Request, res: Response) => {
-    articleDao.getByCategory(req.params.kategori, (status, data) => {
+    const page: number = Number(req.query.page) || 0;
+    articleDao.getByCategory(req.params.kategori, page*SAK_LIMIT, SAK_LIMIT, (status, data) => {
         res.status(status);
         res.json(data);
     });
