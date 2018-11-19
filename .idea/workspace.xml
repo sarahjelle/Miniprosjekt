@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e480b1c-d4b5-4f02-bde2-eaafe271c32c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/articledao.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/articledao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tests/articleDao.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/tests/articleDao.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/tests/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server/tests/create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tests/create_testdata.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server/tests/create_testdata.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tests/runsqlfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/tests/runsqlfile.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,7 +34,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="24" />
           <entry key="json" value="3" />
-          <entry key="sql" value="3" />
+          <entry key="sql" value="4" />
           <entry key="yml" value="1" />
         </counts>
       </usages-collector>
@@ -57,7 +45,7 @@
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="24" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SQL" value="3" />
+          <entry key="SQL" value="4" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
@@ -72,7 +60,7 @@
           <entry key="html" value="167" />
           <entry key="js" value="16522" />
           <entry key="json" value="2" />
-          <entry key="sql" value="902" />
+          <entry key="sql" value="957" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
@@ -82,7 +70,7 @@
           <entry key="HTML" value="167" />
           <entry key="JSON" value="2" />
           <entry key="JavaScript" value="16522" />
-          <entry key="SQL" value="902" />
+          <entry key="SQL" value="957" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
@@ -104,6 +92,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/tests/create_tables.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -132,17 +129,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/public/myStyle.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
+            <state relative-caret-position="175">
               <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            <state relative-caret-position="342">
+              <caret line="49" column="39" lean-forward="true" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -193,7 +190,6 @@
         <option value="$PROJECT_DIR$/server/src/models.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/client/src/widgets.js" />
-        <option value="$PROJECT_DIR$/server/tests/create_tables.sql" />
         <option value="$PROJECT_DIR$/server/tests/create_testdata.sql" />
         <option value="$PROJECT_DIR$/server/tests/runsqlfile.js" />
         <option value="$PROJECT_DIR$/server/package.json" />
@@ -206,6 +202,7 @@
         <option value="$PROJECT_DIR$/client/src/index.js" />
         <option value="$PROJECT_DIR$/.gitlab-ci.yml" />
         <option value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
+        <option value="$PROJECT_DIR$/server/tests/create_tables.sql" />
       </list>
     </option>
   </component>
@@ -407,7 +404,7 @@
       <workItem from="1542116200967" duration="10700000" />
       <workItem from="1542137483770" duration="4065000" />
       <workItem from="1542206235390" duration="31279000" />
-      <workItem from="1542365871937" duration="38173000" />
+      <workItem from="1542365871937" duration="39118000" />
     </task>
     <servers />
   </component>
@@ -444,12 +441,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113314000" />
+    <option name="totallyTimeSpent" value="114259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23688394" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23688394" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -462,7 +460,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Flow" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.85409254" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.11921708" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -558,13 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/myStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -589,13 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/tests/create_testdata.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -603,17 +587,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/tests/create_tables.sql">
+    <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        <state relative-caret-position="342">
+          <caret line="49" column="39" lean-forward="true" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
+    <entry file="file://$PROJECT_DIR$/client/public/myStyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        <state relative-caret-position="175">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/tests/create_tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
         </state>
       </provider>
     </entry>
