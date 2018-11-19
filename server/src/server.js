@@ -31,7 +31,7 @@ const SAK_LIMIT = 20;
 
 app.get("/newsfeed", (req: Request, res: Response) =>{
   console.log("/artikkel: fikk request fra klient");
-  articleDao.getAll((status, data) => {
+  articleDao.getNewsfeed((status, data) => {
     res.status(status);
     res.json(data);
   });

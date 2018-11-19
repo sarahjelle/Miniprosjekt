@@ -6,9 +6,7 @@ import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 import {Alert, CardView, NavBar} from './widgets';
 import {articleService, Article} from './services';
-import {Form, Divider, Container, Label, Card, Button, Icon} from 'semantic-ui-react';
-// $FlowFixMe
-//import 'semantic-ui-css/semantic.min.css';
+import {List, Header, Form, Divider, Container, Label, Card, Button, Icon, Segment, Grid} from 'semantic-ui-react';
 
 // Reload application when not in production environment
 if (process.env.NODE_ENV !== 'production') {
@@ -24,7 +22,10 @@ class Menu extends Component{
   render(){
     return(
         <NavBar>
-            <NavBar.Link to={"/nyheter"}>Hjem</NavBar.Link>
+            <NavBar.Brand>
+                <img src="logo.png" width="150" height="70" className="d-inline-block align-top" alt="logo"/>
+            </NavBar.Brand>
+            <NavBar.Link to={"/nyheter/Nyheter"}>Nyheter</NavBar.Link>
             <NavBar.Link to={"/nyheter/Teknologi"}>Teknologi</NavBar.Link>
             <NavBar.Link to={"/nyheter/Sport"}>Sport</NavBar.Link>
             <NavBar.Link to={"/nyheter/Kultur"}>Kultur</NavBar.Link>
@@ -72,7 +73,7 @@ class Home extends Component {
     render(){
         console.log(this.articles);
         return(
-            <div className="background">
+            <div>
                 <Ticker/>
                 <div className='container'>
                     <div className="grid">
@@ -85,10 +86,9 @@ class Home extends Component {
                             </NavLink>
                         ))}
                     </div>
-                    <div>
-                        <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
-                        <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
-                    </div>
+                    <Divider hidden/>
+                    <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
+                    <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
                 </div>
             </div>
         );
@@ -133,17 +133,18 @@ class Category extends Component<{match: {params: {kategori: string}}}>{
         console.log(this.articles);
         return(
             <div className="container">
-                {this.articles.map(article => (
-                    <NavLink exact to={'/nyheter/' +  article.kategori + '/' + article.artikkel_id}    key={article.artikkel_id}>
-                        <CardView title={article.overskrift}
-                                  picture={article.bilde}
-                                  ingress={article.ingress}/>
-                    </NavLink>
-                ))}
                 <div>
-                    <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
-                    <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
+                    {this.articles.map(article => (
+                        <NavLink exact to={'/nyheter/' +  article.kategori + '/' + article.artikkel_id}    key={article.artikkel_id}>
+                            <CardView title={article.overskrift}
+                                      picture={article.bilde}
+                                      ingress={article.ingress}/>
+                        </NavLink>
+                    ))}
                 </div>
+                <Divider hidden/>
+                <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
+                <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
             </div>
         );
     }
@@ -190,6 +191,7 @@ class ArticleView extends Component<{match: {params: {id: number}}}>{
                 <Container textAlign="center">
                     <h1>{this.article.overskrift}</h1>
                     <i>{this.article.ingress}</i>
+                    <Divider hidden />
                     <img width="100%" height="auto" src={this.article.bilde} alt={this.article.overskrift}/>
                 </Container>
                 <Container textAlign="justified">
@@ -197,11 +199,17 @@ class ArticleView extends Component<{match: {params: {id: number}}}>{
                     <br/>
                     <i> Skrevet av: {this.article.forfatter}</i>
                     <Divider />
-                    <p>{this.article.innhold}</p>
+                    <div>
+                        {(this.article.innhold != null) &&
+                            this.article.innhold.split("\n").map((paragraph, i) => (
+                                <p key={i}>{paragraph}</p>
+                            ))
+                        }
+                        <Divider hidden />
+                    </div>
                     <div>
                         <Button as='div' labelPosition='right' floated='left'>
                             <Button color='red'>
-                                <Icon name='heart' />
                                 Like
                             </Button>
                             <Label as='a' basic color='red' pointing='left'>
@@ -282,7 +290,13 @@ class NewArticle extends Component<{},State>{
                 <Form.TextArea label='Bilde' placeholder='Link til bilde...' onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.state.bilde = event.target.value} />
                 <Form.TextArea label="Ingress" placeholder='Kort om hva artikkelen handler om...' onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.state.ingress = event.target.value}/>
                 <Form.TextArea label="Innhold" placeholder='Innhold...' onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.state.innhold = event.target.value}/>
-                <Form.Button onClick={this.save}>Send inn</Form.Button>
+                <Container textAlign='center'>
+                    <Button.Group>
+                        <Button onClick={() => {history.push('/nyheter')}}>Cancel</Button>
+                        <Button.Or />
+                        <Button positive onClick={this.save}>Save</Button>
+                    </Button.Group>
+                </Container>
             </Form>
             </div>
         );
@@ -353,7 +367,13 @@ class EditArticle extends Component<{match: {params: {id: number}}},State>{
                     <Form.TextArea value={this.article.bilde} label='Bilde' input={this.article.bilde} onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.article.bilde = event.target.value} />
                     <Form.TextArea label="Ingress" value={this.article.ingress} onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.article.ingress = event.target.value}/>
                     <Form.TextArea label="Innhold" value={this.article.innhold} onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.article.innhold = event.target.value}/>
-                    <Form.Button onClick={this.save}>Lagre</Form.Button>
+                    <Container textAlign='center'>
+                        <Button.Group>
+                            <Button onClick={() => {history.push('/nyheter')}}>Cancel</Button>
+                            <Button.Or />
+                            <Button positive onClick={this.save}>Save</Button>
+                        </Button.Group>
+                    </Container>
                 </Form>
             </div>
         );
@@ -394,6 +414,16 @@ class EditArticle extends Component<{match: {params: {id: number}}},State>{
     }
 }
 
+class Footer extends Component{
+    render(){
+        return(
+            <div className='myFooter'>
+                <img src='logo.png'/>
+            </div>
+        );
+    }
+}
+
 const root = document.getElementById('root');
 if (root)
   ReactDOM.render(
@@ -406,6 +436,7 @@ if (root)
         <Route exact path="/nyheter/:kategori/:id" component={ArticleView} />
         <Route exact path="/registrerArtikkel" component={NewArticle} />
         <Route exact path="/nyheter/:kategori/:id/edit" component={EditArticle} />
+        <Footer/>
       </div>
     </HashRouter>,
     root

@@ -19,7 +19,7 @@
     "react-router-dom": "^4.3.1",
     "react-simplified": "^1.5.2",
     "semantic-ui-css": "^2.4.0",
-    "semantic-ui-react": "^0.83.0"
+    "semantic-ui-react": "^0.82.5"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

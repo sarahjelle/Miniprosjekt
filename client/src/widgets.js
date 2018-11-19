@@ -65,7 +65,7 @@ class NavBarBrand extends Component<{ children?: React.Node }> {
     render() {
         if (!this.props.children) return null;
         return (
-            <NavLink className="navbar-brand" activeClassName="active" exact to="/">
+            <NavLink className="navbar-brand" activeClassName="active" exact to="/nyheter">
                 {this.props.children}
             </NavLink>
         );
@@ -92,7 +92,7 @@ export class NavBar extends Component<{ children: React.Element<typeof NavBarBra
 
     render() {
         return (
-            <nav className="navbar navbar-expand-sm bg-light navbar-light">
+            <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 {this.props.children.filter(child => child.type == NavBarBrand)}
                 <ul className="navbar-nav">{this.props.children.filter(child => child.type == NavBarLink)}</ul>
             </nav>

@@ -36,6 +36,8 @@ describe('Testing Articledao.js', () => {
     afterAll(() => {
         pool.end();
     });
+
+
     test("get all articles from db", done => {
         function callback(status, data){
             console.log(
@@ -47,6 +49,19 @@ describe('Testing Articledao.js', () => {
         }
 
         articleDao.getAll(callback);
+    });
+
+    test("get all articles from with imprtance = 2 db", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.length).toBe(1);
+            expect(data[0].overskrift).toBe("Ny forskring viser at testing er sunt");
+            done();
+        }
+
+        articleDao.getNewsfeed(callback);
     });
 
     test("get one article from db", done => {
