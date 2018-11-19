@@ -11,12 +11,12 @@ CREATE TABLE artikkel (
   viktighet INT(11) NOT NULL,
   forfatter VARCHAR(50) NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE kategori(
   navn varchar(50) NOT NULL,
   PRIMARY KEY (navn)
-)
+);
 
 ALTER TABLE artikkel
 ADD CONSTRAINT kategori_fk
