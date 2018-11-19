@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS artikkel;
+DROP TABLE IF EXISTS kategori;
 
 CREATE TABLE artikkel (
   artikkel_id INT(11) NOT NULL AUTO_INCREMENT,
