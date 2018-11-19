@@ -65,6 +65,32 @@ describe('Testing Articledao.js', () => {
             callback
         );
     });
+
+    test("delete article from db", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+
+            expect(data.affectedRows).toBeGreaterThanOrEqual(1);
+            done();
+        }
+
+        articleDao.deleteOne(1, callback);
+    });
+
+    test("get categories from db", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+
+            expect(data[0].navn).toBe("Sport");
+            done();
+        }
+
+        articleDao.getCategories(callback);
+    });
 });
 
 
