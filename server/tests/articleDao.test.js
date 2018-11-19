@@ -13,8 +13,8 @@ var pool = mysql.createPool({
     debug: false,
     multipleStatements: true
 });
-/*
-var pool = mysql.createPool({
+
+/*var pool = mysql.createPool({
     connectionLimit: 2,
     host: "mysql.stud.iie.ntnu.no",
     user: "sarahjel",
@@ -35,6 +35,18 @@ describe('Testing Articledao.js', () => {
 
     afterAll(() => {
         pool.end();
+    });
+    test("get all articles from db", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.length).toBe(3);
+            expect(data[0].overskrift).toBe("Ny forskring viser at testing er sunt");
+            done();
+        }
+
+        articleDao.getAll(callback);
     });
 
     test("get one article from db", done => {
@@ -84,12 +96,62 @@ describe('Testing Articledao.js', () => {
             console.log(
                 "Test callback: status = " + status + ", data = " + JSON.stringify(data)
             );
-
-            expect(data[0].navn).toBe("Sport");
+            expect(data.length).toBe(2);
+            expect(data[0].navn).toBe("Kultur");
             done();
         }
 
         articleDao.getCategories(callback);
+    });
+
+    test("get article by category", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.length).toBe(2);
+            expect(data[0].overskrift).toBe("Johaug vant");
+            done();
+        }
+
+        articleDao.getByCategory("Sport", 0, 20, callback);
+    });
+
+    test("get important articles", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.length).toBe(3);
+            expect(data[0].overskrift).toBe("Forskerne tok feil");
+            done();
+        }
+
+        articleDao.getImportant(0, 20, callback);
+    });
+
+    test("update article", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.affectedRows).toBeGreaterThanOrEqual(1);
+            done();
+        }
+        function callback2(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data[0].overskrift).toBe("Update test");
+            done();
+        }
+
+        articleDao.updateArticle(
+            {overskrift: 'Update test', ingress: 'Enda en forskning', innhold: 'Testing var ikke sunt', kategori: 'Kultur', bilde: 'Bilde', viktighet: 1, forfatter: 'NRK'},
+            2, callback
+        )
+
+        articleDao.getOne(2, callback2)
     });
 });
 
