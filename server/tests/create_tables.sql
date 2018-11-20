@@ -1,5 +1,11 @@
+DROP TABLE IF EXISTS likes;
 DROP TABLE IF EXISTS artikkel;
 DROP TABLE IF EXISTS kategori;
+
+CREATE TABLE kategori(
+  navn varchar(50) NOT NULL,
+  PRIMARY KEY (navn)
+);
 
 CREATE TABLE artikkel (
   artikkel_id INT(11) NOT NULL AUTO_INCREMENT,
@@ -12,11 +18,8 @@ CREATE TABLE artikkel (
   viktighet INT(11) NOT NULL,
   forfatter VARCHAR(50) NOT NULL,
   PRIMARY KEY (artikkel_id)
-);
-
-CREATE TABLE kategori(
-  navn varchar(50) NOT NULL,
-  PRIMARY KEY (navn)
+  KEY cat_fk (kategori),
+      CONSTRAINT cat_fk FOREIGN KEY (kategori) REFERENCES kategori (navn)
 );
 
 CREATE TABLE likes(
@@ -26,8 +29,3 @@ CREATE TABLE likes(
     KEY id_fk (artikkel_id),
     CONSTRAINT id_fk FOREIGN KEY (artikkel_id) REFERENCES artikkel (artikkel_id)
 );
-
-ALTER TABLE artikkel
-ADD CONSTRAINT kategori_fk
-FOREIGN KEY kategori
-REFERENCES navn;
