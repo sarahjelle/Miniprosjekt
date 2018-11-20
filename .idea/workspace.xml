@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e480b1c-d4b5-4f02-bde2-eaafe271c32c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/tests/articleDao.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/tests/articleDao.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/tests/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server/tests/create_tables.sql" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -60,9 +62,9 @@
         <counts>
           <entry key="css" value="490" />
           <entry key="html" value="173" />
-          <entry key="js" value="22245" />
+          <entry key="js" value="22284" />
           <entry key="json" value="5" />
-          <entry key="sql" value="1327" />
+          <entry key="sql" value="1384" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
@@ -71,8 +73,8 @@
           <entry key="CSS" value="490" />
           <entry key="HTML" value="173" />
           <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="22245" />
-          <entry key="SQL" value="1327" />
+          <entry key="JavaScript" value="22284" />
+          <entry key="SQL" value="1384" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
@@ -110,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            <state relative-caret-position="137">
+              <caret line="188" column="41" selection-start-line="188" selection-start-column="41" selection-end-line="188" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -137,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/tests/create_tables.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -190,6 +192,7 @@
       <find>articlevie</find>
       <find>student</find>
       <find>class</find>
+      <find>getI</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -215,9 +218,9 @@
         <option value="$PROJECT_DIR$/server/src/articledao.js" />
         <option value="$PROJECT_DIR$/client/public/myStyle.css" />
         <option value="$PROJECT_DIR$/server/tests/create_testdata.sql" />
-        <option value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
         <option value="$PROJECT_DIR$/client/src/index.js" />
         <option value="$PROJECT_DIR$/server/tests/create_tables.sql" />
+        <option value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
       </list>
     </option>
   </component>
@@ -243,7 +246,7 @@
       <path value="$PROJECT_DIR$/server/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="949" />
     <option name="width" value="980" />
     <option name="height" value="1031" />
@@ -323,7 +326,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.CardView test">
+  <component name="RunManager" selected="Jest.Testing Articledao.js">
     <configuration name="CardView test" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -333,18 +336,6 @@
       <test-file value="$PROJECT_DIR$/client/tests/widgetsTest.js" />
       <test-names>
         <test-name value="CardView test" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="NavBarBrand tests" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <working-dir value="$PROJECT_DIR$/client" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/client/tests/widgetsTest.js" />
-      <test-names>
-        <test-name value="NavBarBrand tests" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -360,7 +351,7 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Testing Articledao.js.update article" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+    <configuration name="Testing Articledao.js.Update likes on a article" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <working-dir value="$PROJECT_DIR$/server" />
@@ -369,36 +360,50 @@
       <test-file value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
       <test-names>
         <test-name value="Testing Articledao.js" />
-        <test-name value="update article" />
+        <test-name value="Update likes on a article" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="test" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+    <configuration name="Testing Articledao.js.get article by category" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
-      <working-dir value="$PROJECT_DIR$/client" />
+      <working-dir value="$PROJECT_DIR$/server" />
       <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/client/tests/widgetsTest.js" />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
       <test-names>
-        <test-name value="test" />
+        <test-name value="Testing Articledao.js" />
+        <test-name value="get article by category" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Testing Articledao.js.get important articles" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <working-dir value="$PROJECT_DIR$/server" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
+      <test-names>
+        <test-name value="Testing Articledao.js" />
+        <test-name value="get important articles" />
       </test-names>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Jest.Testing Articledao.js" />
-      <item itemvalue="Jest.Testing Articledao.js.update article" />
-      <item itemvalue="Jest.NavBarBrand tests" />
-      <item itemvalue="Jest.test" />
       <item itemvalue="Jest.CardView test" />
+      <item itemvalue="Jest.Testing Articledao.js.get article by category" />
+      <item itemvalue="Jest.Testing Articledao.js.get important articles" />
+      <item itemvalue="Jest.Testing Articledao.js.Update likes on a article" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.CardView test" />
-        <item itemvalue="Jest.test" />
-        <item itemvalue="Jest.NavBarBrand tests" />
         <item itemvalue="Jest.Testing Articledao.js" />
-        <item itemvalue="Jest.Testing Articledao.js.update article" />
+        <item itemvalue="Jest.Testing Articledao.js.Update likes on a article" />
+        <item itemvalue="Jest.Testing Articledao.js.get important articles" />
+        <item itemvalue="Jest.Testing Articledao.js.get article by category" />
+        <item itemvalue="Jest.CardView test" />
       </list>
     </recent_temporary>
   </component>
@@ -422,44 +427,44 @@
       <workItem from="1542206235390" duration="31279000" />
       <workItem from="1542365871937" duration="63257000" />
       <workItem from="1542667353378" duration="199000" />
-      <workItem from="1542699823271" duration="13834000" />
+      <workItem from="1542699823271" duration="16325000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Testing_Articledao_js - 2018.11.19 at 14h 30m 29s.xml">
+    <history-entry file="Testing_Articledao_js_get_article_by_category - 2018.11.20 at 17h 45m 20s.xml">
+      <configuration name="Testing Articledao.js.get article by category" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js_get_article_by_category - 2018.11.20 at 17h 46m 08s.xml">
+      <configuration name="Testing Articledao.js.get article by category" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js_get_important_articles - 2018.11.20 at 17h 46m 17s.xml">
+      <configuration name="Testing Articledao.js.get important articles" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js_get_important_articles - 2018.11.20 at 17h 46m 40s.xml">
+      <configuration name="Testing Articledao.js.get important articles" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 46m 55s.xml">
+      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 47m 59s.xml">
+      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 48m 27s.xml">
+      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 48m 43s.xml">
+      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js - 2018.11.20 at 17h 48m 53s.xml">
       <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="Testing_Articledao_js - 2018.11.19 at 14h 39m 18s.xml">
+    <history-entry file="Testing_Articledao_js - 2018.11.20 at 17h 50m 49s.xml">
       <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js - 2018.11.19 at 14h 40m 48s.xml">
-      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js - 2018.11.19 at 14h 41m 09s.xml">
-      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js_update_article - 2018.11.19 at 14h 42m 05s.xml">
-      <configuration name="Testing Articledao.js.update article" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js_update_article - 2018.11.19 at 14h 43m 49s.xml">
-      <configuration name="Testing Articledao.js.update article" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js - 2018.11.19 at 14h 44m 01s.xml">
-      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="NavBarBrand_tests - 2018.11.19 at 14h 52m 56s.xml">
-      <configuration name="NavBarBrand tests" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="test - 2018.11.19 at 15h 01m 07s.xml">
-      <configuration name="test" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="CardView_test - 2018.11.19 at 15h 07m 20s.xml">
-      <configuration name="CardView test" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152431000" />
+    <option name="totallyTimeSpent" value="154922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="633" y="0" width="653" height="687" extended-state="0" />
@@ -470,7 +475,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32851985" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35765123" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5379061" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -478,7 +483,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Flow" order="9" weight="0.3291815" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33754513" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.33274022" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -487,6 +492,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -594,13 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/tests/create_testdata.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/dao.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -615,10 +616,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
+    <entry file="file://$PROJECT_DIR$/server/tests/create_testdata.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state relative-caret-position="170">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/tests/create_tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -632,10 +640,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/tests/create_tables.sql">
+    <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        <state relative-caret-position="137">
+          <caret line="188" column="41" selection-start-line="188" selection-start-column="41" selection-end-line="188" selection-end-column="41" />
         </state>
       </provider>
     </entry>

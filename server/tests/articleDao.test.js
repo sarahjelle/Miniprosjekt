@@ -169,19 +169,6 @@ describe('Testing Articledao.js', () => {
         articleDao.getOne(2, callback2)
     });
 
-    test("Get likes from db", done => {
-        function callback(status, data){
-            console.log(
-                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
-            );
-            expect(data.length).toBe(3);
-            expect(data[0].antall).toBe(2);
-            done();
-        }
-
-        articleDao.getLikes(1, callback);
-    });
-
     test("Update likes on a article", done => {
         function callback(status, data){
             console.log(
@@ -191,16 +178,20 @@ describe('Testing Articledao.js', () => {
             done();
         }
 
-        function callback2(status, data){
+        articleDao.addLikes(4, 1, callback);
+    });
+
+    test("Get likes from db", done => {
+        function callback(status, data){
             console.log(
                 "Test callback: status = " + status + ", data = " + JSON.stringify(data)
             );
-            expect(data[0].antall).toBe(5);
+            expect(data.length).toBe(1);
+            expect(data[0].antall).toBe(2);
             done();
         }
 
-        articleDao.addLikes(2, 5, callback);
-        articleDao.getLikes(2, callback2);
+        articleDao.getLikes(4, callback);
     });
 });
 
