@@ -20,17 +20,14 @@ CREATE TABLE kategori(
 );
 
 CREATE TABLE likes(
-    artikkel_id INT,
+    artikkel_id INT(11) NOT NULL,
     antall INT DEFAULT 0,
-    PRIMARY KEY(artikkel_id)
+    PRIMARY KEY(artikkel_id),
+    KEY id_fk (artikkel_id),
+    CONSTRAINT id_fk FOREIGN KEY (artikkel_id) REFERENCES artikkel (artikkel_id)
 );
 
 ALTER TABLE artikkel
 ADD CONSTRAINT kategori_fk
 FOREIGN KEY kategori
 REFERENCES navn;
-
-ALTER TABLE likes
-ADD CONSTRAINT id_fk
-FOREIGN KEY artikkel_id
-REFERENCES (artikkel) artikkel_id;
