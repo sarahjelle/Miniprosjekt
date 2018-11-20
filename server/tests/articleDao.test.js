@@ -56,7 +56,7 @@ describe('Testing Articledao.js', () => {
             console.log(
                 "Test callback: status = " + status + ", data = " + JSON.stringify(data)
             );
-            expect(data.antall).toBe(3);
+            expect(data[0].antall).toBe(2);
             done();
         }
         articleDao.getCountImportant(callback);
