@@ -37,38 +37,57 @@ class Menu extends Component{
 
 class Ticker extends Component{
     articles = [];
+    intervalID: any = null;
+
     render(){
         return(
-            <div className="scrollmenu">
-                {this.articles.map(article => (
-                    <div className="scrollmenuItem">
-                        <NavLink exact to={'/nyheter/' + article.kategori + '/' + article.artikkel_id}  key={article.artikkel_id}>
-                            <Card>
-                                <Card.Content>
-                                    <Card.Header className="wrapText">{article.overskrift}</Card.Header>
-                                    <Card.Meta>
-                                        <span className='date'>{article.tid}</span>
-                                    </Card.Meta>
-                                </Card.Content>
-                            </Card>
-                        </NavLink>
-                    </div>
-                ))}
-            </div>
+            <marquee direction="left" behavior="scroll" scrollamount="8" ref="marq" onMouseOver={() => {this.refs.marq.stop()}} onMouseOut={() => {this.refs.marq.start()}}>
+                <div>
+                    {this.articles.map(article => (
+                        <div className='scrollmenuItem'>
+                            <NavLink exact to={'/nyheter/' + article.kategori + '/' + article.artikkel_id}  key={article.artikkel_id}>
+                                <Card color='red'>
+                                    <Card.Content>
+                                        <Card.Header className="wrapText">{article.overskrift}</Card.Header>
+                                        <Card.Meta>
+                                            <span className='date'>{article.tid}</span>
+                                        </Card.Meta>
+                                    </Card.Content>
+                                </Card>
+                            </NavLink>
+                        </div>
+                    ))}
+                </div>
+            </marquee>
         );
     }
 
     mounted(){
+        this.refresh();
+        const self = this;
+        this.intervalID = setInterval(function () {
+            self.refresh();
+        }, 5000);
+    }
+
+    refresh(){
         articleService
             .getArticles()
             .then(articles => (this.articles = articles))
             .catch((error: Error) => Alert.danger(error.message));
+        console.log("Refreshing");
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.intervalID);
     }
 }
 
 class Home extends Component {
     articles = [];
     page: number = 0;
+    maxPage: number = 0;
+    lmtPrPage: number = 20;
 
     render(){
         console.log(this.articles);
@@ -98,7 +117,7 @@ class Home extends Component {
         if (this.page < 0) {
             this.page = 0;
         } else {
-            this.page++;
+            this.page = (this.page + 1)%(this.maxPage);
         }
         this.fetchPage();
     };
@@ -121,6 +140,13 @@ class Home extends Component {
 
 
     mounted() {
+        articleService
+            .getAntArticles()
+            .then(count => {
+                this.fetchPage();
+                this.maxPage = Math.floor(count[0].antall/this.lmtPrPage) + 1; //Sets max page count
+            })
+            .catch((error: Error) => Alert.danger(error.message));
         this.fetchPage();
     }
 }
@@ -280,7 +306,7 @@ class NewArticle extends Component<{},State>{
         viktighet: 2
     }
 
-    importance = [{key: 1, text: 'Forside', value: 1}, {key: 2, text: 'Fewsfeed', value: 2}];
+    importance = [{key: 1, text: 'Forside', value: 1}, {key: 2, text: 'Newsfeed', value: 2}];
 
     handleChange = (e, {name, value}) => this.setState({[name]: value})
 

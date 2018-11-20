@@ -19,6 +19,14 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
+    getCountImportant(callback: (status: string, data: string) => mixed){
+        super.query(
+            "SELECT COUNT(*) as antall FROM artikkel WHERE viktighet=1",
+            [],
+            callback
+        );
+    }
+
     getOne(id: number, callback: (status: string, data: string) => mixed){
         super.query("select DATE_FORMAT(tid, '%d. %M  %Y %H:%i') as tid, artikkel_id, overskrift, ingress, innhold, kategori, viktighet, bilde, forfatter from artikkel where artikkel_id=?",
             [id],

@@ -51,6 +51,17 @@ describe('Testing Articledao.js', () => {
         articleDao.getAll(callback);
     });
 
+    test("count all articles from db", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.antall).toBe(3);
+            done();
+        }
+        articleDao.getCountImportant(callback);
+    });
+
     test("get all articles from with importance = 2 db", done => {
         function callback(status, data){
             console.log(

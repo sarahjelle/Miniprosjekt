@@ -38,6 +38,9 @@ class ArticleService{
         return axios.get('/newsfeed')
     }
 
+    getAntArticles(): Promise<Object[]>{
+        return axios.get('/nyheter/antall')
+    }
 
     getArticlesByCategory(category: string, page:number=0): Promise<Article[]>{
         return axios.get('/nyheter/' + category + '?page=' + page);

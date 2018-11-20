@@ -45,6 +45,13 @@ app.get("/nyheter", (req: Request, res: Response) => {
     });
 });
 
+app.get("/nyheter/antall", (req: Request, res: Response) => {
+    articleDao.getCountImportant((status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
 app.get("/nyheter/:kategori", (req: Request, res: Response) => {
     const page: number = Number(req.query.page) || 0;
     articleDao.getByCategory(req.params.kategori, page*SAK_LIMIT, SAK_LIMIT, (status, data) => {
