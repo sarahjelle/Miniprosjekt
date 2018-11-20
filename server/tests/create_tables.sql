@@ -17,7 +17,7 @@ CREATE TABLE artikkel (
   bilde TEXT NOT NULL,
   viktighet INT(11) NOT NULL,
   forfatter VARCHAR(50) NOT NULL,
-  PRIMARY KEY (artikkel_id)
+  PRIMARY KEY (artikkel_id),
   KEY cat_fk (kategori),
       CONSTRAINT cat_fk FOREIGN KEY (kategori) REFERENCES kategori (navn)
 );
