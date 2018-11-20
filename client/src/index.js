@@ -172,7 +172,7 @@ class Category extends Component<{match: {params: {kategori: string}}}>{
                 </div>
                 <Divider hidden/>
                 <Button content='Forrige' floated='left' onClick={this.pageDown}/>
-                <Button content='Neste' floated='right' onClick={this.pageUp}/>gi
+                <Button content='Neste' floated='right' onClick={this.pageUp}/>
             </div>
         );
     }

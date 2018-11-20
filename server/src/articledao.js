@@ -3,15 +3,15 @@
 const Dao = require("./dao.js");
 
 module.exports = class ArticleDao extends Dao{
-    getAll(callback: (status: string, data: string) => mixed){
+    getAll(callback: (status: string, data: Object) => mixed){
         super.query("select DATE_FORMAT(tid, '%d. %M  %Y %H:%i') as tid, overskrift, artikkel_id from artikkel ORDER BY tid DESC", [], callback);
     }
 
-    getNewsfeed(callback: (status: string, data: string) => mixed){
+    getNewsfeed(callback: (status: string, data: Object) => mixed){
         super.query("SELECT DATE_FORMAT(tid, '%d. %M %Y %H:%i') as tid, overskrift, artikkel_id from artikkel WHERE viktighet=2 ORDER BY tid DESC", [], callback);
     }
 
-    getImportant(start: number, end: number, callback: (status: string, data: string) => mixed){
+    getImportant(start: number, end: number, callback: (status: string, data: Object) => mixed){
         super.query(
             "select artikkel_id, tid, overskrift, ingress, bilde, forfatter, kategori from artikkel where viktighet = 1 ORDER BY tid DESC LIMIT ?,?",
             [start, end],
@@ -19,7 +19,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    getCountImportant(callback: (status: string, data: string) => mixed){
+    getCountImportant(callback: (status: string, data: Object) => mixed){
         super.query(
             "SELECT COUNT(*) as antall FROM artikkel WHERE viktighet=1",
             [],
@@ -27,7 +27,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    getCountCategories(category: string, callback: (status: string, data: string) => mixed){
+    getCountCategories(category: string, callback: (status: string, data: Object) => mixed){
         super.query(
             "SELECT COUNT(*) as antall FROM artikkel WHERE kategori=?",
             [category],
@@ -35,14 +35,14 @@ module.exports = class ArticleDao extends Dao{
         )
     }
 
-    getOne(id: number, callback: (status: string, data: string) => mixed){
+    getOne(id: number, callback: (status: string, data: Object) => mixed){
         super.query("select DATE_FORMAT(tid, '%d. %M  %Y %H:%i') as tid, artikkel_id, overskrift, ingress, innhold, kategori, viktighet, bilde, forfatter from artikkel where artikkel_id=?",
             [id],
             callback);
     }
 
 
-    getCategories(callback: (status: string, data: string) => mixed){
+    getCategories(callback: (status: string, data: Object) => mixed){
         super.query(
             "select * from kategori",
             [],
@@ -50,7 +50,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    getByCategory(category: string, start: number, end: number, callback: (status: string, data: string) => mixed){
+    getByCategory(category: string, start: number, end: number, callback: (status: string, data: Object) => mixed){
         super.query(
             "SELECT * FROM artikkel WHERE kategori=? ORDER BY tid DESC LIMIT ?,?",
             [category, start, end],
@@ -58,7 +58,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    createOne(json: Object, callback: (status: string, data: string) => mixed){ //bruke artikkel i stedet for json
+    createOne(json: Object, callback: (status: string, data: Object) => mixed){ //bruke artikkel i stedet for json
         const val = [json.overskrift, json.ingress, json.innhold, json.kategori, json.bilde, json.viktighet, json.forfatter];
 
         super.query(
@@ -73,7 +73,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    deleteOne(id: number, callback: (status: string, data: string) => mixed){
+    deleteOne(id: number, callback: (status: string, data: Object) => mixed){
         super.query(
             "DELETE FROM likes WHERE artikkel_id=?",
             [id],
@@ -87,7 +87,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    updateArticle(json: Object, id: number, callback: (status: string, data: string) => mixed){
+    updateArticle(json: Object, id: number, callback: (status: string, data: Object) => mixed){
         const val = [json.overskrift, json.ingress, json.innhold, json.kategori, json.bilde, json.viktighet, json.forfatter, id];
 
         super.query(
@@ -99,7 +99,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    getLikes(id: number, callback: (status: string, data: string) => mixed){
+    getLikes(id: number, callback: (status: string, data: Object) => mixed){
         super.query(
             "SELECT antall FROM likes WHERE artikkel_id=?",
             [id],
@@ -107,7 +107,7 @@ module.exports = class ArticleDao extends Dao{
         );
     }
 
-    addLikes(id: number, antFraFor: number, callback: (status: string, data: string) => mixed){
+    addLikes(id: number, antFraFor: number, callback: (status: string, data: Object) => mixed){
         console.log("INPUT ANTALL: ", antFraFor);
         const antall: number = antFraFor+1;
         super.query(
