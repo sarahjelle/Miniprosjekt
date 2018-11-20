@@ -7,3 +7,6 @@ INSERT INTO artikkel (overskrift, ingress, innhold, kategori, bilde, viktighet, 
 ('Forskerne tok feil', 'Enda en forskning', 'Testing var ikke sunt', 'Kultur', 'Bilde', 1, 'NRK'),
 ('Johaug vant', 'VM i dans', 'Johaug vant vm i dans', 'Sport', 'Bilde', 1, 'Sara');
 
+INSERT INTO likes(artikkel_id, antall) VALUES
+(1, 2), (2, 1), (2, 4);
+

@@ -51,7 +51,7 @@ describe('Testing Articledao.js', () => {
         articleDao.getAll(callback);
     });
 
-    test("get all articles from with imprtance = 2 db", done => {
+    test("get all articles from with importance = 2 db", done => {
         function callback(status, data){
             console.log(
                 "Test callback: status = " + status + ", data = " + JSON.stringify(data)
@@ -167,6 +167,40 @@ describe('Testing Articledao.js', () => {
         )
 
         articleDao.getOne(2, callback2)
+    });
+
+    test("Get likes from db", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.length).toBe(3);
+            expect(data[0].antall).toBe(2);
+            done();
+        }
+
+        articleDao.getLikes(1, callback);
+    });
+
+    test("Update likes on a article", done => {
+        function callback(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data.affectedRows).toBeGreaterThanOrEqual(1);
+            done();
+        }
+
+        function callback2(status, data){
+            console.log(
+                "Test callback: status = " + status + ", data = " + JSON.stringify(data)
+            );
+            expect(data[0].antall).toBe(5);
+            done();
+        }
+
+        articleDao.addLikes(2, 5, callback);
+        articleDao.getLikes(2, callback2);
     });
 });
 

@@ -67,6 +67,22 @@ app.get("/nyheter/:kategori/:artikkel_id", (req: Request, res: Response) =>{
     });
 });
 
+app.get("/nyheter/:kategori/:artikkel_id/likes", (req: Request, res: Response) => {
+    articleDao.getLikes(req.params.artikkel_id, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+app.put("/nyheter/:kategori/:artikkel_id/likes", (req: Request, res: Response) => {
+    // $FlowFixMe
+    articleDao.addLikes(req.params.artikkel_id, req.body.likes, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+
 app.post("/newarticle", (req: Request, res: Response) => {
     console.log("POST-request fra klient");
     articleDao.createOne(req.body, (status, data) => {

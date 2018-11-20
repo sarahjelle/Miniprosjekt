@@ -2,13 +2,6 @@
 import axios from 'axios';
 axios.interceptors.response.use(response => response.data);
 
-class Student {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-
 export class Article{
   artikkel_id: number;
   overskrift: string;
@@ -35,6 +28,11 @@ class Kategori{
     navn: String;
 }
 
+class Likes{
+    artikkel_id: number;
+    antall: number;
+}
+
 class ArticleService{
     getArticles(): Promise<Article[]>{
         return axios.get('/newsfeed')
@@ -57,6 +55,14 @@ class ArticleService{
         return axios.get('/nyheter/kategori/' + id);
     }
 
+    getLikes(id: number): Promise<Likes[]>{
+        return axios.get('/nyheter/kategori/' + id + '/likes');
+    }
+
+    addLikes(id: number, likesFraFor: number): Promise<void>{
+        return axios.put('/nyheter/kategori/' + id + '/likes', {likes: likesFraFor});
+    }
+
     updateArticle(article: Article, id: number): Promise<void>{
         return axios.put('/nyheter/kategori/' + id, article);
     }
@@ -70,18 +76,4 @@ class ArticleService{
     }
 }
 
-class StudentService {
-  getStudents(): Promise<Student[]> {
-    return axios.get('/students');
-  }
-
-  getStudent(id: number): Promise<Student> {
-    return axios.get('/students/' + id);
-  }
-
-  updateStudent(student: Student): Promise<void> {
-    return axios.put('/students', student);
-  }
-}
-export let studentService = new StudentService();
 export let articleService = new ArticleService();

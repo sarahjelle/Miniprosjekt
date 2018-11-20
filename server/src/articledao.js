@@ -8,7 +8,7 @@ module.exports = class ArticleDao extends Dao{
     }
 
     getNewsfeed(callback: (status: string, data: string) => mixed){
-        super.query("SELECT DATE_FORMAT(tid, '%H:%i  %d. %M %Y') as tid, overskrift, artikkel_id from artikkel WHERE viktighet=2 ORDER BY tid DESC", [], callback);
+        super.query("SELECT DATE_FORMAT(tid, '%d. %M %Y %H:%i') as tid, overskrift, artikkel_id from artikkel WHERE viktighet=2 ORDER BY tid DESC", [], callback);
     }
 
     getImportant(start: number, end: number, callback: (status: string, data: string) => mixed){
@@ -48,15 +48,26 @@ module.exports = class ArticleDao extends Dao{
         super.query(
             "insert into artikkel (overskrift, ingress, innhold, kategori, bilde, viktighet, forfatter) values (?,?,?,?,?,?,?)",
             val,
-            callback
+            (status: number, data: Object) => {
+               super.query(
+                   "INSERT INTO likes (artikkel_id, antall) VALUES (?,?)",
+                   [data.insertId, 0],
+                   callback);
+            }
         );
     }
 
     deleteOne(id: number, callback: (status: string, data: string) => mixed){
         super.query(
-            "DELETE FROM artikkel WHERE artikkel_id=?",
+            "DELETE FROM likes WHERE artikkel_id=?",
             [id],
-            callback
+            () => {
+                super.query(
+                    "DELETE FROM artikkel WHERE artikkel_id=?",
+                    [id],
+                    callback
+                );
+            }
         );
     }
 
@@ -68,6 +79,24 @@ module.exports = class ArticleDao extends Dao{
             "SET overskrift=?, ingress=?, innhold=?, kategori=?, bilde=?, viktighet=?, forfatter=?" +
             "WHERE artikkel_id=?",
             val,
+            callback
+        );
+    }
+
+    getLikes(id: number, callback: (status: string, data: string) => mixed){
+        super.query(
+            "SELECT antall FROM likes WHERE artikkel_id=?",
+            [id],
+            callback
+        );
+    }
+
+    addLikes(id: number, antFraFor: number, callback: (status: string, data: string) => mixed){
+        console.log("INPUT ANTALL: ", antFraFor);
+        const antall: number = antFraFor+1;
+        super.query(
+            "UPDATE likes SET antall=? WHERE artikkel_id=?",
+            [antall, id],
             callback
         );
     }

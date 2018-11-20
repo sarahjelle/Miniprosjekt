@@ -87,8 +87,8 @@ class Home extends Component {
                         ))}
                     </div>
                     <Divider hidden/>
-                    <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
-                    <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
+                    <Button content='Forrige' floated='left' onClick={this.pageDown}/>
+                    <Button content='Neste' floated='right' onClick={this.pageUp}/>
                 </div>
             </div>
         );
@@ -182,10 +182,11 @@ class Category extends Component<{match: {params: {kategori: string}}}>{
 
 class ArticleView extends Component<{match: {params: {id: number}}}>{
     article = {};
+    antLikes: number = 0;
 
     render(){
         if(!this.article) return null;
-
+        console.log(this.antLikes);
         return(
             <div className="container pb-xl-5">
                 <Container textAlign="center">
@@ -209,24 +210,32 @@ class ArticleView extends Component<{match: {params: {id: number}}}>{
                     </div>
                     <div>
                         <Button as='div' labelPosition='right' floated='left'>
-                            <Button color='red'>
+                            <Button color='red' onClick={this.like}>
                                 Like
                             </Button>
-                            <Label as='a' basic color='red' pointing='left'>
-                                2,048
+                            <Label basic color='red' pointing='left'>
+                                <p>{this.antLikes}</p>
                             </Label>
                         </Button>
-                        <Button color='red' floated='right' onClick={this.delete}>
-                            Delete
-                        </Button>
-                        <Button color='orange' floated='right' onClick={() => {history.push('/nyheter/' + this.article.kategori + '/' + this.article.artikkel_id + '/edit')}}>
-                            Edit
-                        </Button>
+                        <Button.Group floated='right'>
+                            <Button color='orange'onClick={() => {history.push('/nyheter/' + this.article.kategori + '/' + this.article.artikkel_id + '/edit')}}>Endre</Button>
+                            <Button.Or />
+                            <Button negative onClick={this.delete}>Slett</Button>
+                        </Button.Group>
                     </div>
                 </Container>
 
             </div>
         );
+    }
+    like(){
+        console.log("ANTALL LIKES ", this.antLikes);
+        articleService
+            .addLikes(this.props.match.params.id, this.antLikes)
+            .then(() => {
+                this.antLikes++;
+            })
+            .catch((error: Error) => Alert.danger(error.message));
     }
     delete(){
         articleService
@@ -239,6 +248,11 @@ class ArticleView extends Component<{match: {params: {id: number}}}>{
         articleService
             .getArticle(this.props.match.params.id)
             .then(article => {(this.article = article[0])})
+            .catch((error: Error) => Alert.danger(error.message));
+
+        articleService
+            .getLikes(this.props.match.params.id)
+            .then(likes => {(this.antLikes = likes.length > 0 ? likes[0].antall : 0)})
             .catch((error: Error) => Alert.danger(error.message));
     }
 }
@@ -266,6 +280,8 @@ class NewArticle extends Component<{},State>{
         viktighet: 2
     }
 
+    importance = [{key: 1, text: 'Forside', value: 1}, {key: 2, text: 'Fewsfeed', value: 2}];
+
     handleChange = (e, {name, value}) => this.setState({[name]: value})
 
     render(){
@@ -285,11 +301,18 @@ class NewArticle extends Component<{},State>{
                                  onChange={this.handleChange}
                     />
                 </Form.Group>
-                <Form.Checkbox label="Kryss av hvis artikkel er viktig"  name='kategori' onChange={this.getViktighet}/>
-                <Form.Input label="Overskrift" placeholder="Overskrift" onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.state.overskrift = event.target.value}/>
-                <Form.TextArea label='Bilde' placeholder='Link til bilde...' onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.state.bilde = event.target.value} />
-                <Form.TextArea label="Ingress" placeholder='Kort om hva artikkelen handler om...' onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.state.ingress = event.target.value}/>
-                <Form.TextArea label="Innhold" placeholder='Innhold...' onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.state.innhold = event.target.value}/>
+                <Form.Select label='Hvor skal den vises?'
+                             options={this.importance}
+                             placeholder='Hvor viktig?'
+                             name='viktighet'
+                             onChange={(event: SyntheticInputEvent<HTMLInputElement>, data: Object) => {this.state.viktighet = data.value}}/>
+                <Form.Input label="Overskrift" placeholder="Overskrift" name='overskrift' onChange={this.handleChange}/>
+                <Form.TextArea label='Bilde' placeholder='Link til bilde...' name='bilde' onChange={this.handleChange} />
+                <Form.TextArea label="Ingress" placeholder='Kort om hva artikkelen handler om...' name='ingress' onChange={this.handleChange}/>
+                <Form.TextArea label="Innhold" placeholder='Innhold...'
+                               name='innhold'
+                               onChange={this.handleChange}
+                               required/>
                 <Container textAlign='center'>
                     <Button.Group>
                         <Button onClick={() => {history.push('/nyheter')}}>Cancel</Button>
@@ -341,6 +364,8 @@ class NewArticle extends Component<{},State>{
 class EditArticle extends Component<{match: {params: {id: number}}},State>{
     article = {};
     options = [];
+    options2 = [{key: 1, text: 'Forside', value: 1}, {key: 2, text: 'Newsfeed', value: 2}];
+    current: string = '';
 
     handleChange = (e, {name, value}) => this.setState({[name]: value})
 
@@ -362,7 +387,12 @@ class EditArticle extends Component<{match: {params: {id: number}}},State>{
                                      onChange={this.handleChange}
                         />
                     </Form.Group>
-                    <Form.Checkbox label="Kryss av hvis artikkel er viktig"  name='kategori' onChange={this.getViktighet}/>
+                    <Form.Select label='Hvor skal den vises?'
+                                 options={this.options2}
+                                 value={this.article.viktighet}
+                                 name='viktighet'
+                                 onChange={(event: SyntheticInputEvent<HTMLInputElement>, data: Object) => {this.article.viktighet = data.value}}/>
+
                     <Form.Input label="Overskrift" value={this.article.overskrift} onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.article.overskrift = event.target.value}/>
                     <Form.TextArea value={this.article.bilde} label='Bilde' input={this.article.bilde} onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.article.bilde = event.target.value} />
                     <Form.TextArea label="Ingress" value={this.article.ingress} onChange={(event: SyntheticInputEvent<HTMLInputElement>) => this.article.ingress = event.target.value}/>
