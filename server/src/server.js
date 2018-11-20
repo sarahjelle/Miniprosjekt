@@ -60,6 +60,13 @@ app.get("/nyheter/:kategori", (req: Request, res: Response) => {
     });
 });
 
+app.get("/nyheter/:kategori/antall", (req: Request, res: Response) => {
+    articleDao.getCountCategories(req.params.kategori, (status, data) => {
+       res.status(status);
+       res.json(data);
+    });
+});
+
 app.get("/kategorier", (req: Request, res: Response) => {
     articleDao.getCategories((status, data) => {
         res.status(status);

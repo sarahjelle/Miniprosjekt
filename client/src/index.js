@@ -123,7 +123,7 @@ class Home extends Component {
     };
 
     pageDown = () => {
-        if (this.page < 0) {
+        if (this.page <= 0) {
             this.page = 0;
         } else {
             this.page--;
@@ -154,12 +154,14 @@ class Home extends Component {
 class Category extends Component<{match: {params: {kategori: string}}}>{
     articles = [];
     page: number = 0;
+    maxPage: number = 0;
+    lmtPrPage: number = 20;
 
     render(){
         console.log(this.articles);
         return(
             <div className="container">
-                <div>
+                <div className='grid'>
                     {this.articles.map(article => (
                         <NavLink exact to={'/nyheter/' +  article.kategori + '/' + article.artikkel_id}    key={article.artikkel_id}>
                             <CardView title={article.overskrift}
@@ -169,8 +171,8 @@ class Category extends Component<{match: {params: {kategori: string}}}>{
                     ))}
                 </div>
                 <Divider hidden/>
-                <Button content='Forrige' icon='left arrow' labelPosition='left' floated='left' onClick={this.pageDown}/>
-                <Button content='Neste' icon='right arrow' labelPosition='right' floated='right' onClick={this.pageUp}/>
+                <Button content='Forrige' floated='left' onClick={this.pageDown}/>
+                <Button content='Neste' floated='right' onClick={this.pageUp}/>gi
             </div>
         );
     }
@@ -179,13 +181,13 @@ class Category extends Component<{match: {params: {kategori: string}}}>{
         if (this.page < 0) {
             this.page = 0;
         } else {
-            this.page++;
+            this.page = (this.page + 1)%(this.maxPage);
         }
         this.fetchPage();
     };
 
     pageDown = () => {
-        if (this.page < 0) {
+        if (this.page <= 0) {
             this.page = 0;
         } else {
             this.page--;
@@ -202,6 +204,13 @@ class Category extends Component<{match: {params: {kategori: string}}}>{
 
 
     mounted() {
+        articleService
+            .getAntArticlesCat(this.props.match.params.kategori)
+            .then(count => {
+                this.fetchPage();
+                this.maxPage = Math.floor(count[0].antall/this.lmtPrPage) + 1; //Sets max page count
+            })
+            .catch((error: Error) => Alert.danger(error.message));
         this.fetchPage();
     }
 }
@@ -474,7 +483,7 @@ class Footer extends Component{
     render(){
         return(
             <div className='myFooter'>
-                <img src='logo.png'/>
+                <img src='logo.png' alt='Logo'/>
             </div>
         );
     }

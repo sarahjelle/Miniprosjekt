@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e480b1c-d4b5-4f02-bde2-eaafe271c32c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tests/articleDao.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/tests/articleDao.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/articledao.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/articledao.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -62,7 +64,7 @@
         <counts>
           <entry key="css" value="521" />
           <entry key="html" value="173" />
-          <entry key="js" value="23553" />
+          <entry key="js" value="24006" />
           <entry key="json" value="5" />
           <entry key="sql" value="1384" />
           <entry key="yml" value="2" />
@@ -73,7 +75,7 @@
           <entry key="CSS" value="521" />
           <entry key="HTML" value="173" />
           <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="23553" />
+          <entry key="JavaScript" value="24006" />
           <entry key="SQL" value="1384" />
           <entry key="YAML" value="2" />
         </counts>
@@ -85,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
-              <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+            <state relative-caret-position="191">
+              <caret line="48" column="21" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -94,17 +96,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+            <state relative-caret-position="206">
+              <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-149">
-              <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+            <state relative-caret-position="154">
+              <caret line="163" column="38" lean-forward="true" selection-start-line="163" selection-start-column="38" selection-end-line="163" selection-end-column="38" />
               <folding>
                 <element signature="e#10#43#0" expanded="true" />
               </folding>
@@ -112,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -151,8 +153,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/articledao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="170">
+              <caret line="29" column="22" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -193,6 +195,7 @@
       <find>student</find>
       <find>class</find>
       <find>getI</find>
+      <find>img</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -216,11 +219,11 @@
         <option value="$PROJECT_DIR$/server/tests/create_tables.sql" />
         <option value="$PROJECT_DIR$/server/tests/create_testdata.sql" />
         <option value="$PROJECT_DIR$/client/public/myStyle.css" />
+        <option value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
         <option value="$PROJECT_DIR$/server/src/articledao.js" />
         <option value="$PROJECT_DIR$/server/src/server.js" />
         <option value="$PROJECT_DIR$/client/src/services.js" />
         <option value="$PROJECT_DIR$/client/src/index.js" />
-        <option value="$PROJECT_DIR$/server/tests/articleDao.test.js" />
       </list>
     </option>
   </component>
@@ -428,26 +431,11 @@
       <workItem from="1542365871937" duration="63257000" />
       <workItem from="1542667353378" duration="199000" />
       <workItem from="1542699823271" duration="21409000" />
-      <workItem from="1542739731505" duration="2983000" />
+      <workItem from="1542739731505" duration="5193000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Testing_Articledao_js_get_important_articles - 2018.11.20 at 17h 46m 40s.xml">
-      <configuration name="Testing Articledao.js.get important articles" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 46m 55s.xml">
-      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 47m 59s.xml">
-      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 48m 27s.xml">
-      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Testing_Articledao_js_Update_likes_on_a_article - 2018.11.20 at 17h 48m 43s.xml">
-      <configuration name="Testing Articledao.js.Update likes on a article" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
     <history-entry file="Testing_Articledao_js - 2018.11.20 at 17h 48m 53s.xml">
       <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
@@ -463,9 +451,24 @@
     <history-entry file="Testing_Articledao_js - 2018.11.20 at 17h 53m 34s.xml">
       <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
+    <history-entry file="Testing_Articledao_js - 2018.11.20 at 20h 39m 59s.xml">
+      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js - 2018.11.20 at 20h 40m 08s.xml">
+      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js - 2018.11.20 at 20h 40m 59s.xml">
+      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js - 2018.11.20 at 20h 41m 09s.xml">
+      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Testing_Articledao_js - 2018.11.20 at 20h 41m 37s.xml">
+      <configuration name="Testing Articledao.js" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162989000" />
+    <option name="totallyTimeSpent" value="165199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -476,7 +479,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32851985" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5302491" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5302491" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -484,7 +487,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Flow" order="9" weight="0.3291815" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.36654803" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30604982" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -610,41 +613,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/services.js">
+    <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/articledao.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="170">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-149">
-          <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+        <state relative-caret-position="154">
+          <caret line="163" column="38" lean-forward="true" selection-start-line="163" selection-start-column="38" selection-end-line="163" selection-end-column="38" />
           <folding>
             <element signature="e#10#43#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/tests/articleDao.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
         </state>
       </provider>
     </entry>

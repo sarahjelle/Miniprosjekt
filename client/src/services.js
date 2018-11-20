@@ -46,6 +46,10 @@ class ArticleService{
         return axios.get('/nyheter/' + category + '?page=' + page);
     }
 
+    getAntArticlesCat(category: string): Promise<Object[]>{
+        return axios.get('nyheter/' + category + '/antall' );
+    }
+
     getImportant(page:number=0): Promise<Article[]>{
         return axios.get('/nyheter?page=' + page);
     }
